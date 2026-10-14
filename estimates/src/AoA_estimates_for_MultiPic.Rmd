@@ -162,9 +162,11 @@ mean(prelim_aoa_estimates$estimate_mean)
 ```{r plot-control-items-correlation-Kuperman}
 # Kuperman exclusion
 # distribution of correlations + which participants would be removed
-plot_corr_distribution(kup_procedure$corr_df, kup_procedure$weak_corr_ids, 
+plot_corr_distribution(kup_procedure$corr_df,
+                       kup_procedure$corr_df |> filter(corr < 0.3) |> pull(ID),
                        title = "Correlations of control items: Kuperman (2012) method",
-                       caption = "Distribution of the correlations of control item ratings to AoA ratings in Birchenough et al. (2017).\n Exclusion of participants with correlation < 0.4. Dashed line denotes the group mean of correlations.")
+                       caption = "Distribution of the correlations of control item ratings to AoA ratings in Birchenough et al. (2017).\n Exclusion of participants with correlation < 0.3. Dashed line denotes the group mean of correlations.") +
+  labs(fill = "Exclusion (r < 0.3)")
 ```
 ```{r}
 mean(kup_procedure$corr_df$corr)
@@ -175,19 +177,15 @@ kup_procedure$corr_df %>%
   filter(corr < 0.45) %>%
   arrange(corr) # sort ascending
 ```
-The subjects close to the proposed threshold of 0.4 (339, 328, 301) seem to be part of the normal distribution.
-
-```{r save-plot-control-items-correlation-Kuperman, eval=FALSE}
-# save_corr_distribution_plot(kup_procedure$corr_df, kup_procedure$weak_corr_ids, 
-#                             save_path = "../figures/before_cleaning/corr-control-items_Kuperman-method.pdf")
-```
 
 ```{r plot-control-items-correlation-Birchenough}
 # Birchenough exclusion
 # distribution of correlations + which participants would be removed
-plot_corr_distribution(birch_procedure$corr_df, birch_procedure$weak_corr_ids, 
+plot_corr_distribution(birch_procedure$corr_df,
+                       birch_procedure$corr_df |> filter(corr < 0.3) |> pull(ID),
                        title = "Correlations of control items: Birchenough (2017) method",
-                       caption = "Distribution of the correlations of control item ratings to item group mean ratings.\n Exclusion of participants with correlation < 0.4. Dashed line denotes the group mean of correlations.")
+                       caption = "Distribution of the correlations of control item ratings to item group mean ratings.\n Exclusion of participants with correlation < 0.3. Dashed line denotes the group mean of correlations.") +
+  labs(fill = "Exclusion (r < 0.3)")
 ```
 ```{r}
 mean(birch_procedure$corr_df$corr)
@@ -198,12 +196,6 @@ birch_procedure$corr_df %>%
   filter(corr < 0.45) %>%
   arrange(corr) # sort ascending
 ```
-Again, the subjects close to the proposed threshold of 0.4 (301) seem to be part of the normal distribution.
-
-```{r save-plot-control-items-correlation-Birchenough, eval=FALSE}
-# save_corr_distribution_plot(birch_procedure$corr_df, birch_procedure$weak_corr_ids, 
-#                             save_path = "../figures/before_cleaning/corr-control-items_Birchenough-method.pdf")
-```
 
 ```{r}
 # how many control items don't have an AoA estimate in Birchenough et al.?
@@ -213,24 +205,22 @@ missing_shared_estimates
 
 ```{r}
 # number of participants excluded according to Kuperman (2012) procedure
-print("r < 0.4:")
-length(kup_procedure$weak_corr_ids) 
-print("Outliers far from main distribution (r < 0.3):")
-length(kup_procedure$corr_df[kup_procedure$corr_df$corr < 0.3,]$ID)
+print("Participants below the exclusion threshold (r < 0.3):")
+sum(kup_procedure$corr_df$corr < 0.3, na.rm = TRUE)
 ```
 
 ```{r}
 # number of participants excluded according to Birchenough (2017) procedure
-print("r < 0.4:")
-length(birch_procedure$weak_corr_ids) 
-print("Outliers far from main distribution (r < 0.3):")
-length(birch_procedure$corr_df[birch_procedure$corr_df$corr < 0.3,]$ID) 
+print("Participants below the exclusion threshold (r < 0.3):")
+sum(birch_procedure$corr_df$corr < 0.3, na.rm = TRUE) 
 ```
 
 ```{r plot-internal-reliability}
-plot_corr_distribution(within_participant_corrs$corr_df, within_participant_corrs$weak_corr_ids, 
+plot_corr_distribution(within_participant_corrs$corr_df,
+                       within_participant_corrs$corr_df |> filter(corr < 0.3) |> pull(ID),
                        title = "Internal reliability of participants",
-                       caption = "Distribution of the correlations of repeated item ratings within each participant.\n Exclusion of participants with correlation < 0.4. Dashed line denotes the group mean of correlations.")
+                       caption = "Distribution of the correlations of repeated item ratings within each participant.\n Exclusion of participants with correlation < 0.3. Dashed line denotes the group mean of correlations.") +
+  labs(fill = "Exclusion (r < 0.3)")
 ```
 ```{r}
 mean(within_participant_corrs$corr_df$corr)
@@ -242,27 +232,20 @@ within_participant_corrs$corr_df %>%
   arrange(corr) # sort ascending
 ```
 
-```{r plot-internal-reliability, eval=FALSE}
-# save_corr_distribution_plot(within_participant_corrs$corr_df, within_participant_corrs$weak_corr_ids,
-#                             save_path = "../figures/before_cleaning/corr-internal-reliability_repeated-items.pdf")
-```
-
 ```{r}
 # number of participants excluded because of internal unreliability
-print("r < 0.4:")
-length(within_participant_corrs$weak_corr_ids)
-print("Outliers far from main distribution (r < 0.3):")
-length(within_participant_corrs$corr_df[within_participant_corrs$corr_df$corr < 0.3,]$ID) 
+print("Participants below the exclusion threshold (r < 0.3):")
+sum(within_participant_corrs$corr_df$corr < 0.3, na.rm = TRUE) 
 ```
 
 ```{r}
 # if all exclusion parameters combined, how many participants actually excluded?
-print("r < 0.4:")
-length(unique(c(birch_procedure$weak_corr_ids, kup_procedure$weak_corr_ids, within_participant_corrs$weak_corr_ids)))
-print("Outliers far from main distribution (r < 0.3):")
-length(unique(c(birch_procedure$corr_df[birch_procedure$corr_df$corr < 0.3,]$ID, 
-                kup_procedure$corr_df[kup_procedure$corr_df$corr < 0.3,]$ID, 
-                within_participant_corrs$corr_df[within_participant_corrs$corr_df$corr < 0.3,]$ID)))
+print("Participants excluded by at least one criterion (r < 0.3):")
+length(unique(c(
+  birch_procedure$corr_df |> filter(corr < 0.3) |> pull(ID),
+  kup_procedure$corr_df |> filter(corr < 0.3) |> pull(ID),
+  within_participant_corrs$corr_df |> filter(corr < 0.3) |> pull(ID)
+)))
 ```
 
 # Full cleaning pipeline
@@ -327,7 +310,7 @@ aoa_estimates <- aoa_estimates %>%
   relocate(item, .after = item_number)
 
 # save 
-# write_excel_csv(aoa_estimates, "../data/aoa_estimates_unique.csv")
+write_excel_csv(aoa_estimates, "../data/aoa_estimates_unique.csv")
 
 # show
 aoa_estimates
