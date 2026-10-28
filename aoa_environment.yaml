@@ -1,269 +1,128 @@
 name: aoa
 channels:
-  - conda-forge
-  - R
-  - defaults
+- conda-forge
+- nodefaults
 dependencies:
-  - _libgcc_mutex=0.1
-  - _openmp_mutex=4.5
-  - _r-mutex=1.0.0
-  - _sysroot_linux-64_curr_repodata_hack=3
-  - asttokens=2.4.1
-  - backcall=0.2.0
-  - binutils_impl_linux-64=2.38
-  - binutils_linux-64=2.38.0
-  - blas=1.0
-  - bottleneck=1.3.5
-  - brotli=1.0.9
-  - brotli-bin=1.0.9
-  - bwidget=1.9.16
-  - bzip2=1.0.8
-  - c-ares=1.19.1
-  - ca-certificates=2024.2.2
-  - cairo=1.16.0
-  - comm=0.2.2
-  - contourpy=1.0.5
-  - curl=7.88.1
-  - cycler=0.11.0
-  - cyrus-sasl=2.1.28
-  - dbus=1.13.18
-  - debugpy=1.8.1
-  - decorator=5.1.1
-  - defusedxml=0.7.1
-  - executing=2.0.1
-  - expat=2.6.2
-  - fontconfig=2.14.1
-  - fonttools=4.51.0
-  - freetype=2.12.1
-  - fribidi=1.0.10
-  - gcc_impl_linux-64=11.2.0
-  - gcc_linux-64=11.2.0
-  - gfortran_impl_linux-64=11.2.0
-  - gfortran_linux-64=11.2.0
-  - glib=2.69.1
-  - graphite2=1.3.14
-  - gst-plugins-base=1.14.1
-  - gstreamer=1.14.1
-  - gxx_impl_linux-64=11.2.0
-  - gxx_linux-64=11.2.0
-  - harfbuzz=4.3.0
-  - icu=58.2
-  - importlib-metadata=7.1.0
-  - importlib_metadata=7.1.0
-  - importlib_resources=6.1.1
-  - ipykernel=6.29.3
-  - ipython=8.12.0
-  - jedi=0.19.1
-  - jpeg=9e
-  - jupyter_client=8.6.1
-  - jupyter_core=5.7.2
-  - kernel-headers_linux-64=3.10.0
-  - kiwisolver=1.4.4
-  - krb5=1.20.1
-  - lcms2=2.12
-  - ld_impl_linux-64=2.38
-  - lerc=3.0
-  - libbrotlicommon=1.0.9
-  - libbrotlidec=1.0.9
-  - libbrotlienc=1.0.9
-  - libclang=14.0.6
-  - libclang13=14.0.6
-  - libcups=2.4.2
-  - libcurl=7.88.1
-  - libdeflate=1.17
-  - libedit=3.1.20230828
-  - libev=4.33
-  - libffi=3.3
-  - libgcc-devel_linux-64=11.2.0
-  - libgcc-ng=13.2.0
-  - libgfortran-ng=11.2.0
-  - libgfortran5=11.2.0
-  - libgomp=13.2.0
-  - libllvm14=14.0.6
-  - libnghttp2=1.52.0
-  - libopenblas=0.3.21
-  - libpng=1.6.39
-  - libpq=12.15
-  - libsodium=1.0.18
-  - libssh2=1.10.0
-  - libstdcxx-devel_linux-64=11.2.0
-  - libstdcxx-ng=13.2.0
-  - libtiff=4.5.1
-  - libuuid=1.41.5
-  - libwebp-base=1.3.2
-  - libxcb=1.15
-  - libxkbcommon=1.0.1
-  - libxml2=2.10.4
-  - lz4-c=1.9.4
-  - make=4.2.1
-  - matplotlib=3.7.1
-  - matplotlib-base=3.7.1
-  - matplotlib-inline=0.1.7
-  - mysql=5.7.24
-  - ncurses=6.4
-  - nest-asyncio=1.6.0
-  - numexpr=2.8.4
-  - numpy=1.21.5
-  - numpy-base=1.21.5
-  - odfpy=1.4.1
-  - openjpeg=2.4.0
-  - openssl=1.1.1w
-  - packaging=23.2
-  - pandas=1.5.3
-  - pandoc=2.12
-  - pango=1.50.7
-  - parso=0.8.4
-  - pcre=8.45
-  - pcre2=10.37
-  - pexpect=4.9.0
-  - pickleshare=0.7.5
-  - pillow=10.3.0
-  - pip=24.0
-  - pixman=0.40.0
-  - platformdirs=4.2.2
-  - ply=3.11
-  - prompt-toolkit=3.0.42
-  - prompt_toolkit=3.0.42
-  - psutil=5.9.8
-  - ptyprocess=0.7.0
-  - pure_eval=0.2.2
-  - pygments=2.18.0
-  - pyparsing=3.0.9
-  - pyqt=5.15.10
-  - pyqt5-sip=12.13.0
-  - python=3.8.3
-  - python-dateutil=2.9.0post0
-  - python_abi=3.8
-  - pytz=2024.1
-  - pyzmq=26.0.3
-  - qt-main=5.15.2
-  - r-askpass=1.1
-  - r-assertthat=0.2.1
-  - r-backports=1.4.1
-  - r-base=4.2.0
-  - r-base64enc=0.1_3
-  - r-bit=4.0.4
-  - r-bit64=4.0.5
-  - r-blob=1.2.3
-  - r-broom=0.8.0
-  - r-bslib=0.5.1
-  - r-cachem=1.0.8
-  - r-callr=3.7.0
-  - r-cellranger=1.1.0
-  - r-cli=3.6.2
-  - r-clipr=0.8.0
-  - r-colorspace=2.0_3
-  - r-cowplot=1.1.3
-  - r-cpp11=0.4.2
-  - r-crayon=1.5.1
-  - r-curl=4.3.2
-  - r-data.table=1.14.2
-  - r-dbi=1.1.2
-  - r-dbplyr=2.1.1
-  - r-digest=0.6.29
-  - r-dplyr=1.0.9
-  - r-dtplyr=1.2.1
-  - r-ellipsis=0.3.2
-  - r-evaluate=0.22
-  - r-fansi=1.0.3
-  - r-farver=2.1.0
-  - r-fastmap=1.1.1
-  - r-fontawesome=0.5.2
-  - r-forcats=0.5.1
-  - r-fs=1.6.3
-  - r-gargle=1.2.0
-  - r-generics=0.1.2
-  - r-ggplot2=3.3.6
-  - r-glue=1.6.2
-  - r-googledrive=2.0.0
-  - r-googlesheets4=1.0.0
-  - r-gtable=0.3.0
-  - r-haven=2.5.0
-  - r-highr=0.9
-  - r-hms=1.1.1
-  - r-htmltools=0.5.6.1
-  - r-httr=1.4.3
-  - r-ids=1.0.1
-  - r-isoband=0.2.5
-  - r-jquerylib=0.1.4
-  - r-jsonlite=1.8.7
-  - r-knitr=1.44
-  - r-labeling=0.4.2
-  - r-lattice=0.20_45
-  - r-lifecycle=1.0.4
-  - r-lubridate=1.8.0
-  - r-magrittr=2.0.3
-  - r-mass=7.3_57
-  - r-matrix=1.4_1
-  - r-memoise=2.0.1
-  - r-mgcv=1.8_40
-  - r-mime=0.12
-  - r-modelr=0.1.8
-  - r-munsell=0.5.0
-  - r-nlme=3.1_157
-  - r-openssl=2.0.2
-  - r-pillar=1.7.0
-  - r-pkgconfig=2.0.3
-  - r-prettyunits=1.1.1
-  - r-processx=3.5.3
-  - r-progress=1.2.2
-  - r-ps=1.7.0
-  - r-purrr=0.3.4
-  - r-r6=2.5.1
-  - r-rappdirs=0.3.3
-  - r-rcolorbrewer=1.1_3
-  - r-readods=2.2.0
-  - r-readr=2.1.2
-  - r-readxl=1.4.0
-  - r-rematch=1.0.1
-  - r-rematch2=2.1.2
-  - r-reprex=2.0.1
-  - r-rlang=1.1.1
-  - r-rmarkdown=2.25
-  - r-rstudioapi=0.13
-  - r-rvest=1.0.2
-  - r-sass=0.4.7
-  - r-scales=1.2.0
-  - r-selectr=0.4_2
-  - r-stringi=1.7.6
-  - r-stringr=1.4.0
-  - r-sys=3.4
-  - r-tibble=3.1.7
-  - r-tidyr=1.2.0
-  - r-tidyselect=1.1.2
-  - r-tidyverse=1.3.1
-  - r-tinytex=0.48
-  - r-tzdb=0.3.0
-  - r-utf8=1.2.2
-  - r-uuid=1.1_0
-  - r-vctrs=0.6.5
-  - r-viridislite=0.4.0
-  - r-vroom=1.5.7
-  - r-withr=2.5.0
-  - r-xfun=0.40
-  - r-xml2=1.3.3
-  - r-yaml=2.3.7
-  - r-zip=2.3.1
-  - readline=8.2
-  - seaborn=0.12.2
-  - setuptools=69.5.1
-  - sip=6.7.12
-  - six=1.16.0
-  - sqlite=3.45.3
-  - stack_data=0.6.2
-  - sysroot_linux-64=2.17
-  - tk=8.6.14
-  - tktable=2.10
-  - tomli=2.0.1
-  - tornado=6.3.3
-  - traitlets=5.14.3
-  - typing_extensions=4.11.0
-  - unicodedata2=15.1.0
-  - wcwidth=0.2.13
-  - wheel=0.43.0
-  - xlrd=2.0.1
-  - xz=5.4.6
-  - zeromq=4.3.5
-  - zipp=3.17.0
-  - zlib=1.2.13
-  - zstd=1.5.5
+- python
+- numpy
+- pandas
+- matplotlib
+- seaborn
+- bottleneck
+- numexpr
+- odfpy
+- xlrd
+- pillow
+- ipython
+- ipykernel
+- jupyter_client
+- jupyter_core
+- pyqt
+- pandoc
+- r-askpass
+- r-assertthat
+- r-backports
+- r-base
+- r-base64enc
+- r-bit
+- r-bit64
+- r-blob
+- r-broom
+- r-bslib
+- r-cachem
+- r-callr
+- r-cellranger
+- r-cli
+- r-clipr
+- r-colorspace
+- r-cowplot
+- r-cpp11
+- r-crayon
+- r-curl
+- r-data.table
+- r-dbi
+- r-dbplyr
+- r-digest
+- r-dplyr
+- r-dtplyr
+- r-ellipsis
+- r-evaluate
+- r-fansi
+- r-farver
+- r-fastmap
+- r-fontawesome
+- r-forcats
+- r-fs
+- r-gargle
+- r-generics
+- r-ggplot2
+- r-glue
+- r-googledrive
+- r-googlesheets4
+- r-gtable
+- r-haven
+- r-highr
+- r-hms
+- r-htmltools
+- r-httr
+- r-ids
+- r-isoband
+- r-jquerylib
+- r-jsonlite
+- r-knitr
+- r-labeling
+- r-lattice
+- r-lifecycle
+- r-lubridate
+- r-magrittr
+- r-mass
+- r-matrix
+- r-memoise
+- r-mgcv
+- r-mime
+- r-modelr
+- r-munsell
+- r-nlme
+- r-openssl
+- r-pillar
+- r-pkgconfig
+- r-prettyunits
+- r-processx
+- r-progress
+- r-ps
+- r-purrr
+- r-r6
+- r-rappdirs
+- r-rcolorbrewer
+- r-readods
+- r-readr
+- r-readxl
+- r-rematch
+- r-rematch2
+- r-reprex
+- r-rlang
+- r-rmarkdown
+- r-rstudioapi
+- r-rvest
+- r-sass
+- r-scales
+- r-selectr
+- r-stringi
+- r-stringr
+- r-sys
+- r-tibble
+- r-tidyr
+- r-tidyselect
+- r-tidyverse
+- r-tinytex
+- r-tzdb
+- r-utf8
+- r-uuid
+- r-vctrs
+- r-viridislite
+- r-vroom
+- r-withr
+- r-xfun
+- r-xml2
+- r-yaml
+- r-zip

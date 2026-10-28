@@ -1,0 +1,31 @@
+---
+title: "metadata_overview"
+author: "Lucas Ruhoff"
+date: "2026-09-25"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(readr)
+library(dplyr)
+################################################################################
+# load custom functions
+source('helper_functions.R', local = knitr::knit_global())
+```
+
+```{r load_data}
+# load raw aoa data
+raw_aoa <- read_csv("../data/raw/item_based_data.csv")
+
+# keep only the relevant demographics columns
+participants_metadata <- raw_aoa |>
+  select(ID, list, gender, age, country, education, L1, monoling, sight, children, child_age) |>
+  distinct(ID, .keep_all = TRUE)
+
+# save csv
+write_excel_csv(participants_metadata, "../data/demographic_overview/participants_metadata.csv")
+```
