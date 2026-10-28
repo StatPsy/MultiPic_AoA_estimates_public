@@ -157,7 +157,9 @@ kuperman_correlations <- function(df){
     correlation <- with(sub_shared, cor(estimate, `B: AoA mean`))
     shared_correlations[shared_correlations$ID == id,]$corr <- correlation
   }
-  return(list("corr_df" = shared_correlations))
+  # weak correlations: correlations < 0.4
+  weak_corr_ids <- shared_correlations[shared_correlations$corr < 0.4,]$ID
+  return(list("corr_df" = shared_correlations, "weak_corr_ids" = weak_corr_ids))
 }
 
 birchenough_correlations <- function(df){
@@ -177,7 +179,8 @@ birchenough_correlations <- function(df){
     correlation <- cor(sub_shared$estimate, relevant_group_estimates$estimate_mean)
     cwm_correlations[cwm_correlations$ID == id,]$corr <- correlation
   }
-  return(list("corr_df" = cwm_correlations))
+  weak_cwm_corr_ids <- cwm_correlations[cwm_correlations$corr < 0.4,]$ID
+  return(list("corr_df" = cwm_correlations, "weak_corr_ids" = weak_cwm_corr_ids))
 }
 
 within_participant_corelations <- function(df){
@@ -204,7 +207,8 @@ within_participant_corelations <- function(df){
     }
     repeated_correlation[repeated_correlation$ID == id,]$corr <- correlation
   }
-  return(list("corr_df" = repeated_correlation))
+  weak_participant_ids <- repeated_correlation[repeated_correlation$corr < 0.4,]$ID
+  return(list("corr_df" = repeated_correlation, "weak_corr_ids" = weak_participant_ids))
 }
 
 plot_corr_distribution <- function(corr_df, id_list, title, caption){
@@ -219,4 +223,16 @@ plot_corr_distribution <- function(corr_df, id_list, title, caption){
     labs(x = "Correlation", y = "Count", fill = "Exclusion",
          title = title, caption = caption) +
     theme_minimal()
+}
+
+save_corr_distribution_plot <- function(corr_df, id_list, save_path){
+  corr_plot <- corr_df %>% 
+    mutate(exclusion = if_else(ID %in% id_list, "yes", "no")) %>% 
+    ggplot(aes(x=corr, fill = exclusion)) + 
+    geom_histogram(bins = 30) +
+    geom_vline(aes(xintercept = mean(corr_df$corr)), linetype=2) +
+    scale_fill_brewer(palette= "Paired", labels = c("no" = "No", "yes" = "Yes")) +
+    labs(x = "Correlation", y = "Count", fill = "Exclusion (r < 0.4)") +
+    theme_minimal()
+  save_plot(save_path, corr_plot)
 }
