@@ -43,6 +43,10 @@ Collection of custom functions used in `AoA_estimates_for_MultiPic.Rmd` so that 
 Takes raw item-based data (`item_based_data.csv`) and combines it with information from existing databases: AoA estimates from Schröder (2012) and Birchenough (2017), and frequency information from SUBTLEX-DE (2011).
 **It saves the result as `item_based_data_add_info.csv` in ../data/raw/derivatives.**
 
+# generate_participants_metadata.Rmd
+Extracts demographic metadata for each participant from the raw item-based data (`item_based_data.csv`).
+**It saves the result as `participants_metadata.csv` in ../data/demographic_overview.**
+
 **Required data (and their structure):**
 - estimates:
 	- data:

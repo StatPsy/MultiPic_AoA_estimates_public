@@ -10,16 +10,18 @@ If you are interested in the final survey set-up, please check out the correspon
 - **external_resources:** Contains a script (`download_corpora.py`) for downloading all already existing databases which are required for code in the [estimates](estimates/) and [study_setup](study_setup/) directories. Also contains a convenient word information overview document and the code to create it.
 - **study_setup:** Contains all data, exploration and final code which serve as the base for creating our AoA questionnaire. 
 
-## Installing requirements
-To ensure that all code from this repository runs smoothly, you can use the provided environment file (`aoa_environment.yaml`) to replicate our working environment.
+## Running the code
 
-If you are using conda or mamba for managing virtual environments, simply copy the fitting line for execution in your terminal:
+- **Docker environment:** Follow [README_DOCKER.md](README_DOCKER.md) to build the image with fixed package versions and run or modify the scripts locally.
+- **Automatic reproduction:** Follow the Docker README on [OSF](https://doi.org/10.17605/OSF.IO/3ETJY) to load the archived image and regenerate the estimates automatically, without rebuilding it.
 
-`$ conda env create --file aoa_environment.yaml`
+Alternatively, create the `aoa` environment using the versionless [Conda/Mamba YAML file](aoa_environment.yaml):
 
-`$ mamba env create --file aoa_environment.yaml`
-
-By default, the new environment will be called `aoa`.
+```bash
+conda env create --file aoa_environment.yaml
+# or
+mamba env create --file aoa_environment.yaml
+```
 
 =================================================================================
 Shield: [![CC BY 4.0][cc-by-shield]][cc-by]

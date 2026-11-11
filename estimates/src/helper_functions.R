@@ -218,9 +218,9 @@ plot_corr_distribution <- function(corr_df, id_list, title, caption){
     ggplot(aes(x=corr, fill = exclusion)) + 
     geom_histogram(bins = 30) +
     geom_vline(aes(xintercept = mean(corr_df$corr)), linetype=2) +
-    #geom_text(data = annotations, aes(x = corr, y = y, label = label))
-    scale_fill_brewer(palette= "Paired") +
-    labs(title = title, caption = caption) +
+    scale_fill_brewer(palette= "Paired", labels = c("no" = "No", "yes" = "Yes")) +
+    labs(x = "Correlation", y = "Count", fill = "Exclusion",
+         title = title, caption = caption) +
     theme_minimal()
 }
 
@@ -230,7 +230,8 @@ save_corr_distribution_plot <- function(corr_df, id_list, save_path){
     ggplot(aes(x=corr, fill = exclusion)) + 
     geom_histogram(bins = 30) +
     geom_vline(aes(xintercept = mean(corr_df$corr)), linetype=2) +
-    scale_fill_brewer(palette= "Paired") +
+    scale_fill_brewer(palette= "Paired", labels = c("no" = "No", "yes" = "Yes")) +
+    labs(x = "Correlation", y = "Count", fill = "Exclusion (r < 0.4)") +
     theme_minimal()
   save_plot(save_path, corr_plot)
 }

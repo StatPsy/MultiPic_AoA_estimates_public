@@ -1,0 +1,21 @@
+{
+  "python": "3.14.10",
+  "pandoc": "3.13",
+  "renv": "1.2.3",
+  "packages": {
+    "numpy": "2.5.4",
+    "pandas": "3.1.0",
+    "matplotlib": "3.11.2",
+    "seaborn": "0.13.2",
+    "bottleneck": "1.6.0",
+    "numexpr": "2.14.2",
+    "odfpy": "1.4.1",
+    "xlrd": "2.0.2",
+    "pillow": "13.0.0",
+    "ipython": "9.17.1",
+    "ipykernel": "7.4.0",
+    "jupyter_client": "8.10.0",
+    "jupyter_core": "5.9.1",
+    "pyqt": "5.15.11"
+  }
+}

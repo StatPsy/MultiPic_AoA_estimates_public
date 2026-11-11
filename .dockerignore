@@ -1,0 +1,10 @@
+# Only send the files needed by this image to the Docker builder.
+**
+!Dockerfile
+!docker/
+!docker/conda-linux-64.lock
+!docker/renv.lock
+!docker/restore.R
+!docker/check-environment.R
+!docker/check-environment.py
+!docker/expected-python.json
